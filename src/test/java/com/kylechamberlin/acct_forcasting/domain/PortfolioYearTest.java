@@ -6,7 +6,7 @@ import org.junit.*;
 public class PortfolioYearTest {
 
 	private static final Year YEAR = new Year(2014);
-	private static final GrowthRate INTEREST_RATE = new GrowthRate(10);
+	private static final AppreciationRate INTEREST_RATE = new AppreciationRate(10);
 	private static final Dollar BEGINNING_BALANCE = new Dollar(10000);
 	private static final Dollar BEGINNING_PRINCIPAL = new Dollar(3000);
 	private static final TaxRate CAPITAL_GAINS_TAX_RATE = new TaxRate(25);

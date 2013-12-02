@@ -5,11 +5,11 @@ public class PortfolioYear {
 	private Year year;
 	private Dollar startingBalance;
 	private Dollar costBase;
-	private GrowthRate interestRate;
+	private AppreciationRate interestRate;
 	private TaxRate taxRate;
 	private Dollar totalSellOrders;
 	
-	public PortfolioYear(Dollar startingBalance, Dollar costBase, GrowthRate interestRate, TaxRate taxRate, Year year) {
+	public PortfolioYear(Dollar startingBalance, Dollar costBase, AppreciationRate interestRate, TaxRate taxRate, Year year) {
 		this.startingBalance = startingBalance;
         this.costBase = costBase;
         this.interestRate = interestRate;
@@ -34,7 +34,7 @@ public class PortfolioYear {
 		return beginningBalance().subtract(beginningCostBase());
 	}
 
-	public GrowthRate interestRate() {
+	public AppreciationRate interestRate() {
 		return interestRate;
 	}
 
@@ -63,7 +63,7 @@ public class PortfolioYear {
 	}
 
 	public Dollar appreciation() {
-		return interestRate.growthFor(startingBalance.subtract(totalSold()));
+		return interestRate.appreciationFor(startingBalance.subtract(totalSold()));
 	}
 
 	public Dollar endingBalance() {

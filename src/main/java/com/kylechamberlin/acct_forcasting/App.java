@@ -30,7 +30,7 @@ public class App extends ApplicationFrame {
 		Year end = new Year(2084);    //I turn 100! yay.
 		Dollar balance = new Dollar(15000);
 		Dollar principal = new Dollar(10000);
-		GrowthRate interestRate = new GrowthRate(9.1);
+		AppreciationRate interestRate = new AppreciationRate(9.1);
 		TaxRate taxRate = new TaxRate(25);
         Dollar amountToSell = new Dollar(900);
         return new Portfolio(balance, principal, interestRate, taxRate, start, end, amountToSell);

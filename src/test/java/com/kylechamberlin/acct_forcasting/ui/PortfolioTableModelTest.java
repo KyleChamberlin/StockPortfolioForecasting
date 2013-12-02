@@ -19,7 +19,7 @@ public class PortfolioTableModelTest {
 
 	@Before
 	public void setup() {
-        portfolio = new Portfolio(BEGINNING_BALANCE, BEGINNING_PRINCIPAL, new GrowthRate(10), new TaxRate(25), START_YEAR, END_YEAR, new Dollar(0));
+        portfolio = new Portfolio(BEGINNING_BALANCE, BEGINNING_PRINCIPAL, new AppreciationRate(10), new TaxRate(25), START_YEAR, END_YEAR, new Dollar(0));
         model = new PortfolioTableModel(portfolio);
 	}
 	

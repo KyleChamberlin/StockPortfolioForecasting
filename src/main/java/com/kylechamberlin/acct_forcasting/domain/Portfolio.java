@@ -7,14 +7,14 @@ public class Portfolio {
 	private PortfolioYear[] portfolioYears;
 	private final Dollar amountToSellEachYear;
 
-	public Portfolio(Dollar beginningBalance, Dollar beginningCostBase, GrowthRate interestRate, TaxRate capitalGainsTaxRate, Year startYear, Year endYear, Dollar amountToSellEachYear) {
+	public Portfolio(Dollar beginningBalance, Dollar beginningCostBase, AppreciationRate interestRate, TaxRate capitalGainsTaxRate, Year startYear, Year endYear, Dollar amountToSellEachYear) {
 		this.startYear = startYear;
 		this.endYear = endYear;
 		this.amountToSellEachYear = amountToSellEachYear;
 		fillYearsWith(beginningBalance, beginningCostBase, interestRate, capitalGainsTaxRate);
 	}
 
-	private void fillYearsWith(Dollar startingBalance, Dollar startingCostBase, GrowthRate interestRate, TaxRate capitalGainsTaxRate) {
+	private void fillYearsWith(Dollar startingBalance, Dollar startingCostBase, AppreciationRate interestRate, TaxRate capitalGainsTaxRate) {
 		this.portfolioYears = new PortfolioYear[lengthInYears()];
 		portfolioYears[0] = new PortfolioYear(startingBalance, startingCostBase, interestRate, capitalGainsTaxRate, startYear);
 		portfolioYears[0].sell(amountToSellEachYear);

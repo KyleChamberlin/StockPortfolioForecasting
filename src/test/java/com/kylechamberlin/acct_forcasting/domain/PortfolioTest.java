@@ -9,7 +9,7 @@ public class PortfolioTest {
 	private static final Year ENDING_YEAR = new Year(2050);
 	private static final Dollar STARTING_BALANCE = new Dollar(10000);
 	private static final Dollar STARTING_PRINCIPAL = new Dollar(7000);
-	private static final GrowthRate INTEREST_RATE = new GrowthRate(10);
+	private static final AppreciationRate INTEREST_RATE = new AppreciationRate(10);
 	private static final TaxRate CAPITAL_GAINS_TAX_RATE = new TaxRate(25);
 
 	@Test
