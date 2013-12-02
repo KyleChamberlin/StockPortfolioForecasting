@@ -1,9 +1,12 @@
 package com.kylechamberlin.acct_forcasting;
 
-import java.awt.*;
-import javax.swing.*;
 import com.kylechamberlin.acct_forcasting.domain.*;
-import com.kylechamberlin.acct_forcasting.ui.*;
+import com.kylechamberlin.acct_forcasting.ui.ApplicationFrame;
+import com.kylechamberlin.acct_forcasting.ui.ForecastTable;
+import com.kylechamberlin.acct_forcasting.ui.PortfolioTableModel;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class App extends ApplicationFrame {
 	private static final long serialVersionUID = 3216816L;
@@ -17,20 +20,20 @@ public class App extends ApplicationFrame {
 	}
 
 	private JScrollPane theTable() {
-		StockMarketTableModel model = new StockMarketTableModel(stockMarket());
+		PortfolioTableModel model = new PortfolioTableModel(stockMarket());
 		JTable table = new ForecastTable(model);
 		return new JScrollPane(table);
 	}
 
-	private Market stockMarket() {
-		Year start = new Year(2014);
-		Year end = new Year(2100);
-		Dollar balance = new Dollar(7500);
-		Dollar principal = new Dollar(7500);
-		GrowthRate interestRate = new GrowthRate(7.125);
+	private Portfolio stockMarket() {
+		Year start = new Year(2014);  //next year.
+		Year end = new Year(2084);    //I turn 100! yay.
+		Dollar balance = new Dollar(15000);
+		Dollar principal = new Dollar(10000);
+		GrowthRate interestRate = new GrowthRate(9.1);
 		TaxRate taxRate = new TaxRate(25);
-        Dollar amountToSell = new Dollar(500);
-        return new Market(balance, principal, interestRate, taxRate, start, end, amountToSell);
+        Dollar amountToSell = new Dollar(900);
+        return new Portfolio(balance, principal, interestRate, taxRate, start, end, amountToSell);
 	}
 	
 	public static void main(String[] args) {
