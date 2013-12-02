@@ -25,7 +25,7 @@ public class Dollar {
 		return new Dollar(Math.max(0, result));
 	}
 
-	public Dollar rate(double percent) {
+	public Dollar percentageOf(double percent) {
 		return new Dollar(amount * percent / 100.0);
 	}
 

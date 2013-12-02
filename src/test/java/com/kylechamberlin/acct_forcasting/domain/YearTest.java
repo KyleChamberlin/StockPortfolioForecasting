@@ -1,33 +1,67 @@
 package com.kylechamberlin.acct_forcasting.domain;
 
+import org.junit.Test;
+
+import java.util.Random;
+
 import static org.junit.Assert.*;
-import org.junit.*;
 
 
 public class YearTest {
 
 	@Test
-	public void nextYear() {
-		Year thisYear = new Year(2010);
-		assertEquals(new Year(2011), thisYear.nextYear());
+	public void nextYearIsThisYearPlusOne() {
+		Year thisYear = new Year(2014);
+		assertEquals(new Year(2015), thisYear.nextYear());
 	}
 	
 	@Test
-	public void numberOfYearsInclusive() {
-		Year thisYear = new Year(2010);
-		assertEquals(41, thisYear.yearsUntil(new Year(2050)));
+	public void yearsUntilIncludesFirstYear() {
+		Year thisYear = new Year(2014);
+		assertEquals(71, thisYear.yearsUntil(new Year(2084)));
 	}
-	
-	@Test
-	public void valueObject() {
-		Year year1a = new Year(2010);
-		Year year1b = new Year(2010);
-		Year year2 = new Year(2012);
-		
-		assertEquals("2010", year1a.toString());
-		assertTrue("years with same value should be equal", year1a.equals(year1b));
-		assertFalse("years with different values should not be equal", year1a.equals(year2));
-		assertTrue("years with same value should have same hashcode", year1a.hashCode() == year1b.hashCode());
-	}
-	
+
+    @Test
+    public void toStringIsYear() {
+        assertEquals("2014",new Year(2014).toString());
+        assertEquals("2015",new Year(2015).toString());
+    }
+
+    @Test
+    public void yearsWithSameValueAreEqual() {
+        Random random = new Random();
+
+        for (int i = 0; i < 100; i++){
+            int randomInt = random.nextInt(1000) + 2000; //year from 2000 to 3000
+            assertEquals(new Year(randomInt), new Year(randomInt));
+        }
+    }
+
+    @Test
+    public void sameObjectIsEqual() {
+        Year year = new Year(2014);
+
+        assertEquals(year, year);
+    }
+
+    @Test
+    public void yearsWithDifferentValuesAreNotEqual() {
+        Random random = new Random();
+
+        for (int i = 0; i < 100; i++){
+            int randomInt1 = 2000 + random.nextInt(1000);
+            int randomInt2 = randomInt1 + 1 + random.nextInt(1000);
+            assertFalse(new Year(randomInt1).equals(new Year(randomInt2)));
+        }
+    }
+
+    @Test
+    public void yearsWithSameValueHaveSameHashCode() {
+        Random random = new Random();
+
+        for (int i = 0; i < 100; i++){
+            int randomInt = 2000 + random.nextInt(1000);
+            assertTrue(new TaxRate(randomInt).hashCode() == new TaxRate(randomInt).hashCode());
+        }
+    }
 }

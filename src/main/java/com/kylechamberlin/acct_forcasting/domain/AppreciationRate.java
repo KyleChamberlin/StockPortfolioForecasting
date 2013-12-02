@@ -9,7 +9,7 @@ public class AppreciationRate {
 	}
 
 	public Dollar appreciationFor(Dollar amount) {
-		return amount.rate(rateAsPercentage);
+		return amount.percentageOf(rateAsPercentage);
 	}
 	
 	@Override

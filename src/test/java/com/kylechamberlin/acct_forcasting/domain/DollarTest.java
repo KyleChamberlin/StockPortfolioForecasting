@@ -1,9 +1,11 @@
 package com.kylechamberlin.acct_forcasting.domain;
 
-import static org.junit.Assert.*;
-import org.junit.*;
+import org.junit.Test;
 
 import java.util.Random;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class DollarTest {
@@ -44,10 +46,15 @@ public class DollarTest {
     }
 
 	@Test
-	public void rate() {
-		assertEquals(new Dollar(20), new Dollar(100).rate(20));
+	public void percentageOfCalculationForRoundNumbers() {
+		assertEquals(new Dollar(20), new Dollar(100).percentageOf(20));
 	}
-	
+
+	@Test
+	public void PercentageOfCalculationForDecimalNumbers() {
+		assertEquals(new Dollar(20), new Dollar(100.20).percentageOf(20.01));
+	}
+
 	@Test
 	public void minimum() {
 		Dollar value1 = new Dollar(20);

@@ -8,6 +8,11 @@ import com.kylechamberlin.acct_forcasting.ui.PortfolioTableModel;
 import javax.swing.*;
 import java.awt.*;
 
+/* NOT TESTED!
+ * STUB CODE TO RUN THE CURRENT APP
+ * TODO: Replace this entire class with a TDD class once the API settles down.
+ */
+
 public class App extends ApplicationFrame {
 	private static final long serialVersionUID = 3216816L;
 
@@ -20,20 +25,20 @@ public class App extends ApplicationFrame {
 	}
 
 	private JScrollPane theTable() {
-		PortfolioTableModel model = new PortfolioTableModel(stockMarket());
+		PortfolioTableModel model = new PortfolioTableModel(portfolio());
 		JTable table = new ForecastTable(model);
 		return new JScrollPane(table);
 	}
 
-	private Portfolio stockMarket() {
+	private Portfolio portfolio() {
 		Year start = new Year(2014);  //next year.
 		Year end = new Year(2084);    //I turn 100! yay.
 		Dollar balance = new Dollar(15000);
 		Dollar principal = new Dollar(10000);
 		AppreciationRate interestRate = new AppreciationRate(9.1);
 		TaxRate taxRate = new TaxRate(25);
-        Dollar amountToSell = new Dollar(900);
-        return new Portfolio(balance, principal, interestRate, taxRate, start, end, amountToSell);
+        Dollar amountToSellEachYear = new Dollar(900);
+        return new Portfolio(balance, principal, interestRate, taxRate, start, end, amountToSellEachYear);
 	}
 	
 	public static void main(String[] args) {

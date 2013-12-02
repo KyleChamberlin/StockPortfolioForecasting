@@ -8,13 +8,13 @@ public class TaxRate {
 		this.rateAsPercentage = rateAsPercentage;
 	}
 	
-	public Dollar simpleTaxFor(Dollar amount) {
-		return amount.rate(rateAsPercentage);
+	public Dollar dumbTax(Dollar amount) {
+		return amount.percentageOf(rateAsPercentage);
 	}
 
-	public Dollar compoundTaxFor(Dollar amount) {
+	public Dollar complexTaxFor(Dollar amount) {
 		double compoundRate = (100.0 / (100.0 - rateAsPercentage)) - 1;
-		return amount.rate(compoundRate * 100);
+		return amount.percentageOf(compoundRate * 100);
 	}
 	
 	@Override

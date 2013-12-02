@@ -7,7 +7,7 @@ public class PortfolioYear {
 	private Dollar costBase;
 	private AppreciationRate interestRate;
 	private TaxRate taxRate;
-	private Dollar totalSellOrders;
+	private Dollar totalSales;
 	
 	public PortfolioYear(Dollar startingBalance, Dollar costBase, AppreciationRate interestRate, TaxRate taxRate, Year year) {
 		this.startingBalance = startingBalance;
@@ -15,7 +15,7 @@ public class PortfolioYear {
         this.interestRate = interestRate;
         this.taxRate = taxRate;
         this.year = year;
-        this.totalSellOrders = new Dollar(0);
+        this.totalSales = new Dollar(0);
     }
 
 	public Year year() {
@@ -30,7 +30,7 @@ public class PortfolioYear {
 		return costBase;
 	}
 
-	private Dollar startingCapitalGains() {
+	private Dollar beginningGains() {
 		return beginningBalance().subtract(beginningCostBase());
 	}
 
@@ -43,23 +43,23 @@ public class PortfolioYear {
 	}
 
 	public void sell(Dollar amount) {
-		this.totalSellOrders = totalSellOrders.add(amount);
+		this.totalSales = totalSales.add(amount);
 	}
 
-	private Dollar capitalGainsWithdrawn() {
-		return Dollar.minimum(startingCapitalGains(), totalSellOrders());
+	private Dollar gainsSold() {
+		return Dollar.minimum(beginningGains(), totalSales());
 	}
 
-	public Dollar taxIncurred() {
-		return taxRate.compoundTaxFor(capitalGainsWithdrawn());
+	public Dollar taxesIncurred() {
+		return taxRate.complexTaxFor(gainsSold());
 	}
 
-	public Dollar totalSellOrders() {
-		return totalSellOrders;
+	public Dollar totalSales() {
+		return totalSales;
 	}
 
 	public Dollar totalSold() {
-		return totalSellOrders().add(taxIncurred());
+		return totalSales().add(taxesIncurred());
 	}
 
 	public Dollar appreciation() {
@@ -71,7 +71,7 @@ public class PortfolioYear {
 	}
 
 	public Dollar endingCostBase() {
-		Dollar soldPurchases = totalSold().subtractNonNegative(startingCapitalGains());
+		Dollar soldPurchases = totalSold().subtractNonNegative(beginningGains());
 		return beginningCostBase().subtract(soldPurchases);
 	}
 
