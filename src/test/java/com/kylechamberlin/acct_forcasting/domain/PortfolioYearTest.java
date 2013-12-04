@@ -14,12 +14,12 @@ public class PortfolioYearTest {
 	private static final Dollar BEGINNING_PRINCIPAL = new Dollar(3000);
 	private static final TaxRate CAPITAL_GAINS_TAX_RATE = new TaxRate(25);
 
-    private PortfolioYear testPortfolioYear;
+    	private PortfolioYear testPortfolioYear;
 
-    @Before
-    public void setUp() {
-        testPortfolioYear = makeNewYear();
-    }
+    	@Before
+	public void setUp() {
+        	testPortfolioYear = makeNewYear();
+    	}
 
 	@Test
 	public void nounValues() {
@@ -98,10 +98,10 @@ public class PortfolioYearTest {
 		assertEquals(testPortfolioYear.taxRate(), nextPortfolioYear.taxRate());
 	}
 
-    @After
-    public void tearDown() {
-        testPortfolioYear = null;
-    }
+    	@After
+    	public void tearDown() {
+        	testPortfolioYear = null;
+    	}
 
 	private PortfolioYear makeNewYear() {
 		return new PortfolioYear(BEGINNING_BALANCE, BEGINNING_PRINCIPAL, INTEREST_RATE, CAPITAL_GAINS_TAX_RATE, YEAR);
